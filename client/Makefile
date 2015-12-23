@@ -38,8 +38,10 @@ installsystemd:
 	cp ./$(BIN) /usr/sbin/$(BIN); \
 	cp ../init.scripts/systemd/$(BIN).service /lib/systemd/system/$(BIN).service; \
 	systemctl daemon-reload; \
+	if [ `systemctl is-enabled $(BIN).service 2>/dev/null` != 'disabled' ]; then \
 	systemctl enable $(BIN); \
 	systemctl start $(BIN); \
+	fi \
 
 installsysv:
 	@echo using sysv; \
