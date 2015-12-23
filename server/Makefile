@@ -21,7 +21,7 @@ $(TARGET): $(OBJ)
 clean:
 	rm -rf $(BIN) $(OBJ) *~
 
-install: $(TARGET) uninstall
+install: $(TARGET)
 	@if [[ `systemctl` =~ -\.mount ]]; then \
 		$(MAKE) installsystemd; \
 	elif [[ `/sbin/init --version` =~ upstart ]]; then \
