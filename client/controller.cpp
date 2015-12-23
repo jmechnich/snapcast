@@ -196,7 +196,8 @@ void Controller::worker()
 		catch (const std::exception& e)
 		{
 			asyncException_ = false;
-			logS(kLogErr) << "Exception in Controller::worker(): " << e.what() << endl;
+                        if (clientConnection_->active())
+                                logS(kLogErr) << "Exception in Controller::worker(): " << e.what() << endl;
 			logO << "Stopping clientConnection" << endl;
 			clientConnection_->stop();
 			logO << "Deleting stream" << endl;

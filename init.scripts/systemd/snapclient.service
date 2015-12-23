@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/sbin/snapclient
+StandardOutput=null
 
 [Install]
 WantedBy=multi-user.target
