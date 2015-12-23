@@ -116,7 +116,7 @@ int main(int argc, char* argv[])
 
 		PublishAvahi publishAvahi("SnapCast");
 		std::vector<AvahiService> services;
-		services.push_back(AvahiService("_snapcast._tcp", settings.port));
+		services.push_back(AvahiService("_snapcast._tcp", settings.port, AVAHI_PROTO_INET));
 		publishAvahi.publish(services);
 
 		if (settings.bufferMs < 400)
